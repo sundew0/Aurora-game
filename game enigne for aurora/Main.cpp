@@ -32,6 +32,9 @@ int main(int argc, char* args[])
 		entity(30, 0, grassTexture),
 		entity(30, 30, grassTexture) };
 	
+	entity maddie(100, 50, grassTexture);
+
+	entities.push_back(maddie);
 
 	bool gameRunning = true;
 
@@ -47,8 +50,8 @@ int main(int argc, char* args[])
 		
 		window.Clear();
 
-		for (int i = 0; i < 3; i++) {
-			window.render(entities[i]);
+		for (entity& e : entities) {
+			window.render(e);
 		}
 
 		window.display();
