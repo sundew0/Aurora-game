@@ -15,6 +15,9 @@ int main(int argc, char* args[])
 		cout << "IMG_Init has Failed: " << SDL_GetError() << endl;
 	
 	RenderWindow window("Aurora v0.1", 1280, 720);
+
+	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");
+	SDL_Texture* Maddie = window.loadTexture("src/img/player/Maddie.png");
 	
 	bool gameRunning = true;
 
@@ -27,6 +30,10 @@ int main(int argc, char* args[])
 			if (event.type == SDL_QUIT)
 				gameRunning = false;
 		}
+		
+		window.Clear();
+		window.render(Maddie);
+		window.display();
 	}
 
 	window.CleanUp();

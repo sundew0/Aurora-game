@@ -12,7 +12,7 @@ using namespace std;
 RenderWindow::RenderWindow(const char* p_Title, int p_Width, int p_Height)
 	:window(NULL), renderer(NULL)
 {
-	window = SDL_CreateWindow(p_Title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_Width, p_Height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(p_Title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_Width, p_Height, SDL_WINDOW_RESIZABLE);
 
 	if (window == NULL)
 	{
@@ -26,7 +26,33 @@ RenderWindow::RenderWindow(const char* p_Title, int p_Width, int p_Height)
 	}
 }
 
+SDL_Texture* RenderWindow::loadTexture(const char* p_filePath)
+{
+	SDL_Texture* texture = NULL;
+	texture = IMG_LoadTexture(renderer, p_filePath);
+
+	if (texture == NULL)
+		cout << "Failed to load texture. Error:" << SDL_GetError << endl;
+
+	return texture;
+}
+
 void RenderWindow::CleanUp()
 {
 	SDL_DestroyWindow(window);
+}
+
+void RenderWindow::Clear()
+{
+	SDL_RenderClear(renderer);
+}
+
+void RenderWindow::render(SDL_Texture* p_texture)
+{
+	SDL_RenderCopy(renderer, p_texture, NULL, NULL);
+}
+
+void RenderWindow::display()
+{
+	SDL_RenderPresent(renderer);
 }
