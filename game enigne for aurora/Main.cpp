@@ -1,7 +1,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include <vector>
+
 #include "RenderWindow.h"
+#include "entity.h"
 
 using namespace std;
 
@@ -19,6 +22,17 @@ int main(int argc, char* args[])
 	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");
 	SDL_Texture* Maddie = window.loadTexture("src/img/player/Maddie.png");
 	
+	//entity platforms[3] = {
+	//	entity(0, 0, grassTexture),
+	//	entity(30, 0, grassTexture),
+	//	entity(30, 30, grassTexture)
+	//};
+	std::vector<entity> entities = {
+		entity(0, 0, grassTexture),
+		entity(30, 0, grassTexture),
+		entity(30, 30, grassTexture) };
+	
+
 	bool gameRunning = true;
 
 	SDL_Event event;
@@ -32,7 +46,11 @@ int main(int argc, char* args[])
 		}
 		
 		window.Clear();
-		window.render(Maddie);
+
+		for (int i = 0; i < 3; i++) {
+			window.render(entities[i]);
+		}
+
 		window.display();
 	}
 
