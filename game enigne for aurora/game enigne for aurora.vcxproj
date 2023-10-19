@@ -139,11 +139,15 @@
   <ItemGroup>
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="math.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="RenderWindow.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,6 +7,9 @@ class RenderWindow
 public:
 	RenderWindow(const char* p_Title, int p_Width, int p_Height);
 	SDL_Texture* loadTexture(const char* p_filePath);
+
+	int getRefreshRate();
+
 	void CleanUp();
 	void Clear();
 	void render(entity& p_entity);
