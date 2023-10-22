@@ -6,11 +6,15 @@
 #include "RenderWindow.h"
 #include "entity.h"
 #include "Utils.h"
+//#include "player.h"
 
 using namespace std;
 
 int main(int argc, char* args[])
 {
+
+	//player player;
+
 	if (SDL_Init(SDL_INIT_VIDEO) > 0)
 		cout << "SDL_Init has Failed: " << SDL_GetError() << endl;
 	
@@ -22,7 +26,8 @@ int main(int argc, char* args[])
 	
 
 	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");
-	SDL_Texture* Maddie = window.loadTexture("src/img/player/Maddie.png");
+	float grassTextureSize = (32, 32);
+	SDL_Texture* Maddie = window.loadTexture("src/img/player/maddie test.png");
 	
 	//entity platforms[3] = {
 	//	entity(0, 0, grassTexture),
@@ -30,12 +35,11 @@ int main(int argc, char* args[])
 	//	entity(30, 30, grassTexture)
 	//};
 	std::vector<entity> entities = {
-		entity(Vector2f(0, 120), grassTexture),
-		entity(Vector2f(30, 120), grassTexture),
-		entity(Vector2f(60, 120), grassTexture) };
+		entity(Vector2f(0, 120), grassTexture, 32, 32),
+		entity(Vector2f(30, 120), grassTexture, 32, 32),
+		entity(Vector2f(60, 120), grassTexture, 32, 32)};
 	{
-		entity maddie(Vector2f(80, 120), grassTexture);
-
+		entity maddie(Vector2f(80, 120), Maddie, 96, 128);
 		entities.push_back(maddie);
 	}
 
@@ -62,13 +66,21 @@ int main(int argc, char* args[])
 		{
 
 			while (SDL_PollEvent(&event))
-			{
-				if (event.type == SDL_QUIT)
+
+				switch (event.type) {
+					/* Keyboard event */
+					/* Pass the event data onto PrintKeyInfo() */
+				case SDL_KEYDOWN:
+				//	player.control();
+				case SDL_KEYUP:
+					
+				case  SDL_QUIT:
 					gameRunning = false;
-			}
-		
-			accumulator -= timestep;
-			
+
+
+					accumulator -= timestep;
+
+				}
 		}
 
 		const float alpha = accumulator / timestep;

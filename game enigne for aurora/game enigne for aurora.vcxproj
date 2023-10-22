@@ -140,12 +140,14 @@
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="math.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
     <ClInclude Include="math.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
