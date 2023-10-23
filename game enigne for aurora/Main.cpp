@@ -6,14 +6,14 @@
 #include "RenderWindow.h"
 #include "entity.h"
 #include "Utils.h"
-//#include "player.h"
+#include "player.h"
 
 using namespace std;
 
 int main(int argc, char* args[])
 {
 
-	//player player;
+	player player;
 
 	if (SDL_Init(SDL_INIT_VIDEO) > 0)
 		cout << "SDL_Init has Failed: " << SDL_GetError() << endl;
@@ -26,7 +26,6 @@ int main(int argc, char* args[])
 	
 
 	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");
-	float grassTextureSize = (32, 32);
 	SDL_Texture* Maddie = window.loadTexture("src/img/player/maddie test.png");
 	
 	//entity platforms[3] = {
@@ -38,10 +37,8 @@ int main(int argc, char* args[])
 		entity(Vector2f(0, 120), grassTexture, 32, 32),
 		entity(Vector2f(30, 120), grassTexture, 32, 32),
 		entity(Vector2f(60, 120), grassTexture, 32, 32)};
-	{
-		entity maddie(Vector2f(80, 120), Maddie, 96, 128);
-		entities.push_back(maddie);
-	}
+	entity maddie(player.get_Player_Pos(), Maddie, 96, 128); 
+	entities.push_back(maddie); 
 
 	bool gameRunning = true;
 
@@ -53,6 +50,7 @@ int main(int argc, char* args[])
 
 	while (gameRunning)
 	{
+
 		int startTicks = SDL_GetTicks();
 		
 		float newTime = Utils::hireTimeInSeconds();
@@ -67,13 +65,15 @@ int main(int argc, char* args[])
 
 			while (SDL_PollEvent(&event))
 
+			
 				switch (event.type) {
 					/* Keyboard event */
 					/* Pass the event data onto PrintKeyInfo() */
 				case SDL_KEYDOWN:
-				//	player.control();
+					player.control(event);
+					break;
 				case SDL_KEYUP:
-					
+					break;
 				case  SDL_QUIT:
 					gameRunning = false;
 
@@ -82,7 +82,9 @@ int main(int argc, char* args[])
 
 				}
 		}
+		
 
+		
 		const float alpha = accumulator / timestep;
 
 

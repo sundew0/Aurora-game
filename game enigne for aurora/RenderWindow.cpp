@@ -58,6 +58,7 @@ void RenderWindow::Clear()
 	SDL_RenderClear(renderer);
 }
 
+
 void RenderWindow::render(entity& p_entity)
 {
 	SDL_Rect src;

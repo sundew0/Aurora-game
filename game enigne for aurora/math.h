@@ -17,4 +17,16 @@ struct Vector2f
 	}
 
 		float x, y;
-};                    
+
+};
+
+class math
+{
+public:
+	float getDeltaTime() {
+		return delta_time;
+	}
+
+private: 
+	float delta_time = 0.5;
+};
