@@ -1,0 +1,4 @@
+﻿  RenderWindow.cpp
+C:\Users\lfoerder26\source\repos\Aurora-game\game enigne for aurora\RenderWindow.cpp(71,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\lfoerder26\source\repos\Aurora-game\game enigne for aurora\RenderWindow.cpp(72,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  game enigne for aurora.vcxproj -> C:\Users\lfoerder26\source\repos\Aurora-game\x64\Debug\game enigne for aurora.exe
