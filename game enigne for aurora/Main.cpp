@@ -37,7 +37,10 @@ int main(int argc, char* args[])
 		entity(Vector2f(0, 120), grassTexture, 32, 32),
 		entity(Vector2f(30, 120), grassTexture, 32, 32),
 		entity(Vector2f(60, 120), grassTexture, 32, 32)};
-	entity maddie(player.get_Player_Pos(), Maddie, 96, 128); 
+	float x = 70;
+	entity maddie(player.get_Player_Pos(), Maddie, 96, 128);
+	
+	
 	entities.push_back(maddie); 
 
 	bool gameRunning = true;
@@ -76,11 +79,11 @@ int main(int argc, char* args[])
 					break;
 				case  SDL_QUIT:
 					gameRunning = false;
-
-
-					accumulator -= timestep;
-
+					break;
 				}
+				accumulator -= timestep;
+
+				
 		}
 		
 
@@ -92,17 +95,19 @@ int main(int argc, char* args[])
 
 		for (entity& e : entities) {
 			window.render(e);
+
 		}
 
-		window.display();
+;
 
 		int frameTicks = SDL_GetTicks() - startTicks;
 		
 		if (frameTicks < 1000 / window.getRefreshRate())
 		{
+			window.display()
 			SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
 		}
-	
+		
 	}
 
 	window.CleanUp();

@@ -13,6 +13,7 @@ public:
 		Vector2f player_pos(player_x, player_y);
 		return player_pos;
 	};
+	
 	enum class Direction
 	{
 		NONE,
@@ -25,6 +26,7 @@ private:
 	Vector2f player_pos;
 	
 	float player_x = 200;
+
 	float player_y = 100;
 	Direction    m_direction;
 };
