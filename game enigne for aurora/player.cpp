@@ -8,7 +8,7 @@ void player::control(SDL_Event const& event)
 {
 
     float delta_time = 0.5;
-    cout << "x " << player_x << " y " << player_y << endl;
+
     switch (event.type)
         {
         case SDL_KEYDOWN:
@@ -22,6 +22,8 @@ void player::control(SDL_Event const& event)
                 m_direction = Direction::LEFT;
             else if (keys[SDL_SCANCODE_D] == 1)
                 m_direction = Direction::RIGHT;
+            else
+                m_direction = Direction::NONE;
             break;
     }
 
@@ -33,19 +35,15 @@ void player::control(SDL_Event const& event)
             break;
         case Direction::UP:
             player_y = player_y - (5.0 * delta_time);
-            cout << "up" << endl;
             break;
         case Direction::DOWN:
             player_y = player_y + (5.0 * delta_time);
-            cout << "down" << endl;
             break;
         case Direction::LEFT:
             player_x = player_x - (5.0 * delta_time);
-            cout << "left" << endl;
             break;
         case Direction::RIGHT:
             player_x = player_x + (5.0 * delta_time);
-            cout << "right" << endl;
             break;
     }
 }

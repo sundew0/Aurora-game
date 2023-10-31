@@ -38,10 +38,7 @@ int main(int argc, char* args[])
 		entity(Vector2f(30, 120), grassTexture, 32, 32),
 		entity(Vector2f(60, 120), grassTexture, 32, 32)};
 	float x = 70;
-	entity maddie(player.get_Player_Pos(), Maddie, 96, 128);
-	
-	
-	entities.push_back(maddie); 
+
 
 	bool gameRunning = true;
 
@@ -54,18 +51,10 @@ int main(int argc, char* args[])
 	while (gameRunning)
 	{
 
-		int startTicks = SDL_GetTicks();
-		
-		float newTime = Utils::hireTimeInSeconds();
-		float frameTime = newTime - currentTime;
-
-		currentTime = newTime;
-
-		accumulator += frameTime;
-
-		while (accumulator >= timestep)
-		{
-
+		entity maddie(player.get_Player_Pos(), Maddie, 96, 128);
+	
+	
+		entities.push_back(maddie); 
 			while (SDL_PollEvent(&event))
 
 			
@@ -74,21 +63,16 @@ int main(int argc, char* args[])
 					/* Pass the event data onto PrintKeyInfo() */
 				case SDL_KEYDOWN:
 					player.control(event);
+
 					break;
 				case SDL_KEYUP:
 					break;
+				
 				case  SDL_QUIT:
 					gameRunning = false;
 					break;
 				}
-				accumulator -= timestep;
 
-				
-		}
-		
-
-		
-		const float alpha = accumulator / timestep;
 
 
 		window.Clear();
@@ -98,16 +82,9 @@ int main(int argc, char* args[])
 
 		}
 
-;
+		window.display();
 
-		int frameTicks = SDL_GetTicks() - startTicks;
-		
-		if (frameTicks < 1000 / window.getRefreshRate())
-		{
-			window.display()
-			SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
-		}
-		
+
 	}
 
 	window.CleanUp();

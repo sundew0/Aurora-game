@@ -11,6 +11,7 @@ public:
 	Vector2f& get_Player_Pos()
 	{
 		Vector2f player_pos(player_x, player_y);
+	
 		return player_pos;
 	};
 	

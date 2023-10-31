@@ -51,6 +51,7 @@ int RenderWindow::getRefreshRate()
 void RenderWindow::CleanUp()
 {
 	SDL_DestroyWindow(window);
+
 }
 
 void RenderWindow::Clear()
