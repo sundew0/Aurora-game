@@ -10,10 +10,20 @@ public:
 	void control(SDL_Event const& event);
 	Vector2f& get_Player_Pos()
 	{
-		Vector2f player_pos(player_x, player_y);
+		gravity();
+		Vector2f player_pos(player_x, player_y += acceleration);
 	
 		return player_pos;
-	};
+	};	
+	float gravity() {
+		gravityval* mass;
+		velocity += gravityval;
+		player_y += velocity;
+		std::cout << player_y << std::endl;
+		return acceleration;
+		
+	}
+
 	
 	enum class Direction
 	{
@@ -23,7 +33,14 @@ public:
 		LEFT,
 		RIGHT
 	};
+
+	float acceleration = 0;
+	
+	float velocity = 0;
+	float gravityval = 0.0001;
+
 private:
+	int mass = 100;
 	Vector2f player_pos;
 	
 	float player_x = 200;

@@ -38,7 +38,7 @@ int main(int argc, char* args[])
 		entity(Vector2f(30, 120), grassTexture, 32, 32),
 		entity(Vector2f(60, 120), grassTexture, 32, 32)};
 	float x = 70;
-
+	
 
 	bool gameRunning = true;
 
@@ -47,14 +47,18 @@ int main(int argc, char* args[])
 	const float timestep = 0.01f;
 	float accumulator = 0.0f;
 	float currentTime = Utils::hireTimeInSeconds();
-
+	int test = 0;
+	entity maddie(player.get_Player_Pos(), Maddie, 96, 128); 
 	while (gameRunning)
 	{
+		std::vector<entity> entities = {
+		entity(Vector2f(0, 120), grassTexture, 32, 32),
+		entity(Vector2f(30, 120), grassTexture, 32, 32),
+		entity(Vector2f(60, 120), grassTexture, 32, 32),	
+		entity(player.get_Player_Pos(), Maddie, 96, 128) };// player
+		
+	
 
-		entity maddie(player.get_Player_Pos(), Maddie, 96, 128);
-	
-	
-		entities.push_back(maddie); 
 			while (SDL_PollEvent(&event))
 
 			
