@@ -16,10 +16,9 @@ public:
 		return player_pos;
 	};	
 	float gravity() {
-		gravityval* mass;
+		gravityval * mass;
 		velocity += gravityval;
 		player_y += velocity;
-		std::cout << player_y << std::endl;
 		return acceleration;
 		
 	}
@@ -33,6 +32,9 @@ public:
 		LEFT,
 		RIGHT
 	};
+	void collisionY() {
+		velocity = 0;
+	}
 
 	float acceleration = 0;
 	

@@ -7,6 +7,7 @@
 #include "entity.h"
 #include "Utils.h"
 #include "player.h"
+#include "collision.h"
 
 using namespace std;
 
@@ -28,34 +29,24 @@ int main(int argc, char* args[])
 	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");
 	SDL_Texture* Maddie = window.loadTexture("src/img/player/maddie test.png");
 	
-	//entity platforms[3] = {
-	//	entity(0, 0, grassTexture),
-	//	entity(30, 0, grassTexture),
-	//	entity(30, 30, grassTexture)
-	//};
-	std::vector<entity> entities = {
-		entity(Vector2f(0, 120), grassTexture, 32, 32),
-		entity(Vector2f(30, 120), grassTexture, 32, 32),
-		entity(Vector2f(60, 120), grassTexture, 32, 32)};
-	float x = 70;
-	
 
 	bool gameRunning = true;
-
+	collision collision_tester;
 	SDL_Event event;
 
 	const float timestep = 0.01f;
 	float accumulator = 0.0f;
 	float currentTime = Utils::hireTimeInSeconds();
 	int test = 0;
-	entity maddie(player.get_Player_Pos(), Maddie, 96, 128); 
 	while (gameRunning)
 	{
-		std::vector<entity> entities = {
-		entity(Vector2f(0, 120), grassTexture, 32, 32),
-		entity(Vector2f(30, 120), grassTexture, 32, 32),
-		entity(Vector2f(60, 120), grassTexture, 32, 32),	
-		entity(player.get_Player_Pos(), Maddie, 96, 128) };// player
+		std::vector<entity> mapplatforms = {
+		entity(Vector2f(170, 300), grassTexture, 32, 32),
+		entity(Vector2f(230, 300), grassTexture, 32, 32),
+		entity(Vector2f(200, 300), grassTexture, 32, 32) };
+
+
+		entity playerentity(player.get_Player_Pos(), Maddie, 96, 128);// player
 		
 	
 
@@ -81,14 +72,13 @@ int main(int argc, char* args[])
 
 		window.Clear();
 
-		for (entity& e : entities) {
+		for (entity& e : mapplatforms) {
 			window.render(e);
-
+			collision_tester.check_Collision(e.getCurrentFrame(), e.getPos(), playerentity.getCurrentFrame(), playerentity.getPos());
 		}
+		window.render(playerentity);
 
 		window.display();
-
-
 	}
 
 	window.CleanUp();
