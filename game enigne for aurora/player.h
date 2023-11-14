@@ -16,19 +16,23 @@ public:
 		return player_pos;
 	};	
 	float gravity() {
+		
+			
 		gravityval * mass;
 		velocity += gravityval;
 		player_y += velocity;
 		return acceleration;
+	
+	
 		
 	}
 
+	
 	
 	enum class Direction
 	{
 		NONE,
 		UP,
-		DOWN,
 		LEFT,
 		RIGHT
 	};
@@ -39,7 +43,8 @@ public:
 	float acceleration = 0;
 	
 	float velocity = 0;
-	float gravityval = 0.0001;
+	
+	float gravityval = 0.00001;
 
 private:
 	int mass = 100;

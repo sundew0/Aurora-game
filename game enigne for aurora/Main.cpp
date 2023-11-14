@@ -38,6 +38,7 @@ int main(int argc, char* args[])
 	float accumulator = 0.0f;
 	float currentTime = Utils::hireTimeInSeconds();
 	int test = 0;
+	bool playercollision = false;
 	while (gameRunning)
 	{
 		std::vector<entity> mapplatforms = {
@@ -68,13 +69,17 @@ int main(int argc, char* args[])
 					break;
 				}
 
-
-
 		window.Clear();
 
 		for (entity& e : mapplatforms) {
 			window.render(e);
-			collision_tester.check_Collision(e.getCurrentFrame(), e.getPos(), playerentity.getCurrentFrame(), playerentity.getPos());
+
+			playercollision = collision_tester.check_Collision(e.getCurrentFrame(), e.getPos(), playerentity.getCurrentFrame(), playerentity.getPos());
+		}
+		if (playercollision == true) {
+			cout << "collision" << endl;
+			player.collisionY();
+
 		}
 		window.render(playerentity);
 

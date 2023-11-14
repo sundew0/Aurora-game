@@ -16,8 +16,6 @@ void player::control(SDL_Event const& event)
 
             if (keys[SDL_SCANCODE_W] == 1)
                 m_direction = Direction::UP;
-            else if (keys[SDL_SCANCODE_S] == 1)
-                m_direction = Direction::DOWN;
             else if (keys[SDL_SCANCODE_A] == 1)
                 m_direction = Direction::LEFT;
             else if (keys[SDL_SCANCODE_D] == 1)
@@ -34,10 +32,7 @@ void player::control(SDL_Event const& event)
             player_y += 0.0;
             break;
         case Direction::UP:
-            player_y = player_y - (5.0 * delta_time);
-            break;
-        case Direction::DOWN:
-            player_y = player_y + (5.0 * delta_time);
+            player_y = velocity - 10;
             break;
         case Direction::LEFT:
             player_x = player_x - (5.0 * delta_time);

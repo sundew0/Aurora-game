@@ -44,8 +44,7 @@ bool collision::check_Collision(SDL_Rect a, Vector2f& a_pos, SDL_Rect b, Vector2
     }
 
     //If none of the sides from A are outside B
-    player playerer;
-    playerer.collisionY();
+
     return true;
     
 }
