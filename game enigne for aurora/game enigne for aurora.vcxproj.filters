@@ -36,6 +36,12 @@
     <ClCompile Include="collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mapload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="maploading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderWindow.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapload.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maploading.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

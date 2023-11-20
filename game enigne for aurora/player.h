@@ -45,6 +45,8 @@ public:
 	float velocity = 0;
 	
 	float gravityval = 0.00001;
+	static const int Player_WIDTH = 96;
+	static const int Player_HEIGHT = 128;
 
 private:
 	int mass = 100;

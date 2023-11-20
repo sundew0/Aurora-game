@@ -7,13 +7,14 @@
 #include "entity.h"
 #include "Utils.h"
 #include "player.h"
+#include "maploading.h"
 #include "collision.h"
 
 using namespace std;
 
 int main(int argc, char* args[])
 {
-
+	maploading loadMap;
 	player player;
 
 	if (SDL_Init(SDL_INIT_VIDEO) > 0)
@@ -23,7 +24,7 @@ int main(int argc, char* args[])
 	if (!(IMG_Init(IMG_INIT_PNG)))
 		cout << "IMG_Init has Failed: " << SDL_GetError() << endl;
 	
-	RenderWindow window("Aurora v0.1", 1280, 720);
+	RenderWindow window("Aurora v0.1", loadMap.SCREEN_WIDTH , loadMap.SCREEN_HEIGHT);
 	
 
 	SDL_Texture* grassTexture = window.loadTexture("src/img/player/ground_grass_1.png");

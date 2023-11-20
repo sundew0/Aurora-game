@@ -140,6 +140,8 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="mapload.cpp" />
+    <ClCompile Include="maploading.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
@@ -148,6 +150,8 @@
   <ItemGroup>
     <ClInclude Include="collision.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="mapload.h" />
+    <ClInclude Include="maploading.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="RenderWindow.h" />
